@@ -144,8 +144,9 @@ module Dropbox
     #
     # @param [String] path
     # @return [String] cursor
-    def get_latest_list_folder_cursor(path)
-      resp = request('/files/list_folder/get_latest_cursor', path: path)
+    def get_latest_list_folder_cursor(path, options = {})
+      opts = { path: path }.merge(options)
+      resp = request('/files/list_folder/get_latest_cursor', opts)
       resp['cursor']
     end
 
